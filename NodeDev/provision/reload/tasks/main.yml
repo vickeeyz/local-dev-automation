@@ -1,0 +1,7 @@
+- name: reload supervisorctl
+  shell: supervisorctl reload
+  register: reload
+
+- name: check app status
+  shell: supervisorctl status
+  register: status

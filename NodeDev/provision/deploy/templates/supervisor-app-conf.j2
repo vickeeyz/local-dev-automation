@@ -1,0 +1,14 @@
+[program:saywat]
+environment = NODE_ENV="development"
+directory = /var/www/saywat
+command = node /var/www/saywat/app.js
+user = vagrant
+autostart = true
+autorestart = true
+startretries = 3
+stdout_logfile = /var/log/supervisor/saywat-access.log
+stdout_logfile_maxbytes = 10MB
+stdout_logfile_backups = 10
+stderr_logfile = /var/log/supervisor/saywat-error.log
+stderr_logfile_maxbytes = 20MB
+stderr_logfile_backups = 10

@@ -1,0 +1,23 @@
+- name: update the server
+  apt: update_cache=yes
+
+- name: Adding ppa repo for nodejs
+  apt_repository: repo='ppa:chris-lea/node.js'
+
+- name: Adding apt-key from mongodb keyserver for mongodb
+  apt_key: keyserver=keyserver.ubuntu.com id=EA312927
+
+- name: Adding apt repo to sources.list for mongodb
+  apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse' state=present
+
+- name: update the server
+  apt: update_cache=yes
+
+- name: Install mongodb and nodejs
+  sudo: yes
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items:
+       - mongodb-org
+       - nodejs
+       - supervisor
+       - vim
